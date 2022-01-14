@@ -127,3 +127,64 @@ def test_knows_MAD_turn_winner():
 
     assert turn.type() == "MAD"
     assert turn.winner() == "No Winner"
+
+def test_can_pile_basic_turn():
+    card1 = Card("diamond", "Queen", 12)
+    card2 = Card("spade", "3", 3)
+    card3 = Card("Heart", "Ace", 14)
+    card4 = Card("spade", "7", 7)
+    cards1 = [card1, card2]
+    cards2 = [card3, card4]
+
+    deck1 = Deck(cards1)
+    deck2 = Deck(cards2)
+    player1 = Player("Van", deck1)
+    player2 = Player("Kujo", deck2)
+    turn = Turn(player1, player2)
+
+    assert turn.type() == "basic"
+    turn.pile_cards()
+    assert turn.spoils == [card1, card3]
+
+def test_can_pile_war_turn():
+    card1 = Card("diamond", "Queen", 12)
+    card2 = Card("spade", "3", 3)
+    card3 = Card("Heart", "Queen", 12)
+    card4 = Card("spade", "7", 7)
+    card5 = Card("diamond", "King", 13)
+    card6 = Card("diamond", "Ace", 14)
+    cards1 = [card1, card2, card5]
+    cards2 = [card3, card4, card6]
+
+    deck1 = Deck(cards1)
+    deck2 = Deck(cards2)
+    player1 = Player('Calvin', deck1)
+    player2 = Player('Hobbes', deck2)
+    turn = Turn(player1, player2)
+
+    assert turn.type() == "war"
+    turn.pile_cards()
+    assert turn.spoils == [card1, card2, card5, card3, card4, card6]
+
+def test_can_pile_MAD_turn():
+    card1 = Card("diamond", "Queen", 12)
+    card2 = Card("spade", "3", 3)
+    card3 = Card("Heart", "Queen", 12)
+    card4 = Card("spade", "7", 7)
+    card5 = Card("diamond", "King", 13)
+    card6 = Card("Spade", "King", 13)
+    card7 = Card("Club", "10", 10)
+    card8 = Card("Club", "Jack", 11)
+    cards1 = [card1, card2, card5, card7]
+    cards2 = [card3, card4, card6, card8]
+
+    deck1 = Deck(cards1)
+    deck2 = Deck(cards2)
+    player1 = Player('Calvin', deck1)
+    player2 = Player('Hobbes', deck2)
+    turn = Turn(player1, player2)
+    assert turn.type() == "MAD"
+    turn.pile_cards()
+    assert turn.spoils == []
+    assert turn.player1.deck.cards == [card7]
+    assert turn.player2.deck.cards == [card8]
