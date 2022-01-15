@@ -59,7 +59,7 @@ class Turn:
         for card in range(3):
             self.player2.deck.remove_card()
 
-    def award_spoils(self, winner):
+    def award_spoils(self, winner): # gives winner their spoils
         for card in self.spoils:
             winner.deck.add_card(card)
         self.spoils = []
