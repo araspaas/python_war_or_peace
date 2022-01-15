@@ -61,5 +61,5 @@ class Turn:
 
     def award_spoils(self, winner):
         for card in self.spoils:
-            winner.deck.add_card(c)
+            winner.deck.add_card(card)
         self.spoils = []
