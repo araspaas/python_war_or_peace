@@ -60,6 +60,6 @@ class Turn:
             self.player2.deck.remove_card()
 
     def award_spoils(self, winner):
-        for c in self.spoils:
+        for card in self.spoils:
             winner.deck.add_card(c)
         self.spoils = []
