@@ -18,7 +18,7 @@ class Game:
                 print("Mutually Assured Destruction 6 card have been removed from play")
                 self.turn.pile_cards()
             else:
-                print("Turn" +str(turn_count) + self.turn.type() + ": " + str(winner.name) + " has won the game")
+                print("Turn" +str(turn_count) + self.turn.type() + ": " + str(winner.name) + " has won the round")
                 self.turn.pile_cards()
                 print(str(len(self.turn.spoils)) + " cards!")
                 self.turn.award_spoils(winner)
