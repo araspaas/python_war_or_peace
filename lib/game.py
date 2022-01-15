@@ -15,7 +15,7 @@ class Game:
         while not (self.player1.has_lost() or self.player2.has_lost() or turn_count == 1000000):
             winner = self.turn.winner()
             if winner == "No Winner":
-                print("Mutually Assured Destruction 6 card have been removed from play")
+                print("Mutually Assured Destruction 6 cards have been removed from play")
                 self.turn.pile_cards()
             else:
                 print("Turn" +str(turn_count) + self.turn.type() + ": " + str(winner.name) + " has won the round")
