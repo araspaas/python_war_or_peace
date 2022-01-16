@@ -22,17 +22,16 @@ player2_deck = Deck(cards[26:-1])
 
 decision = input(
     "Welcome to War! (or Peace) This game will be played with 52 cards.\n"
-    "The players today are Van and Kujo.\n"
     "Type \'GO\' to start the game!\n"
     "------------------------------------------------------------------\n")
 
 if decision.upper() == "GO":
-    van = Player("Van", player1_deck)
-    kujo = Player("Kujo", player2_deck)
+    player1 = Player(input("Enter Player1's name:"), player1_deck)
+    player2 = Player(input("Enter Player2's name:"), player2_deck)
 
-    turn = Turn(van, kujo)
-    game = Game(van, kujo, turn)
+    turn = Turn(player1, player2)
+    game = Game(player1, player2, turn)
     winner = game.start()
-    print(winner + " Wins War or Peace")
+    print(winner + " Wins War or Peace! Thanks for playing")
 else:
     print("Thanks for playing!")
