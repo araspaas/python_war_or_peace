@@ -20,7 +20,7 @@ class Game:
             else:
                 print("Turn" +str(turn_count) + self.turn.type() + ": " + str(winner.name) + " has won the round")
                 self.turn.pile_cards()
-                print(str(len(self.turn.spoils)) + " cards!")
+                print(str(len(self.turn.spoils)) + " cards added to " + str(winner.name) + "'s" + " deck")
                 self.turn.award_spoils(winner)
             turn_count += 1
 
